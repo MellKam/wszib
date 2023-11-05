@@ -1,6 +1,6 @@
 import { and, imp, not, or, v } from "./main.ts";
 
-// [(p−→q)∧(r−→q)]−→[(¬q∨¬q)−→(¬p∨¬r)]
+// ((p → q) ∧ (r → q)) → ((¬q ∨ ¬q) → (¬p ∨ ¬r))
 const Q = imp(
   and(imp(v("p"), v("q")), imp(v("r"), v("q"))),
   imp(or(not(v("q")), not(v("q"))), or(not(v("p")), not(v("r")))),
@@ -12,3 +12,10 @@ try {
 } catch (_) {
   console.log("Q is not tautology");
 }
+
+// Equivalence ↔
+// Negation ¬
+// Alternative ∨
+// Conjuction ∧
+// Implication →
+// XOR ⊕
