@@ -1,0 +1,10 @@
+# $Id: services,v 1.17 2004/03/8 20:11:31 notting Exp $
+#
+telnet          23/tcp
+http            80/tcp          www www-http    # WorldWideWeb HTTP
+https           443/tcp                         # MCom
+https           443/udp                         # MCom
+iiop            535/tcp
+dhcpv6-client   546/tcp 
+kerberos-iv     750/udp         kerberos4 kerberos-sec kdc
+hmmp-ind        612/udp         dqs313_intercell # HMMP Indication / DQS
