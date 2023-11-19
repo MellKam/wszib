@@ -7,4 +7,11 @@
  */
 
 rootProject.name = 'wszib-java'
-include 'homework4', 'homework5'
+include (
+  'homework1', 
+  'homework2', 
+  'homework3', 
+  'homework4', 
+  'homework5', 
+  'homework6',
+)
