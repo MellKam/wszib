@@ -1,0 +1,7 @@
+Gra toczy się na kwadratowej planszy o boku n podzielonej na n^2 komórek. Każda komórka (z wyjątkiem leżących na brzegach planszy) ma ośmiu "sąsiadów", czyli komórki przylegające do niej bokami i rogami. Komórka może być pusta albo zajęta przez mrówkę. Stany komórek zmieniają się dynamicznie. Mrówka wybiera losowo jedną z ośmiu komórek sąsiednich. Jeżeli wybrana komórka jest wolna, to mrówka zmienia swoje położenie. W przeciwnym przypadku pozostaje na miejscu. Mrówki powinny być zaimplementowane jako wątki. Sprawdzenie stanu komórek sąsiednich i ewentualne przemieszczenie stanowi sekcję krytyczną (czyli jest operacją niepodzielną). Po wykonaniu ruchu mrówka zasypia na wybraną losowo liczbę milisekund. Jeżeli mrówka wyjdzie poza planszę "umiera", a na jej miejsce pojawia sie nowa (na losowo wybranym wolnym polu).
+
+Napisz program symulujący położenia mrówek w kolejnych chwilach czasu. Rozmiar planszy n jest podany parametrem programu. Stan początkowy generowany jest losowo z udziałem "zajętych" komórek podanym drugim parametrem programu.
+
+Każde zdarzenie (przemieszczenie lub śmierć / narodziny mrówki) powinno spowodować wypisanie odpowiedniego komunikatu i aktualnego stanu planszy (podobnie jak w przypadku gry w życie). Proszę tak dobrać przedział czasowy, na jaki mrówki zasypiają, żeby wydruk pojawiał sie z rozsądną częstotliwością (cokolwiek to oznacza).
+
+Przykładowy wynik działania programu:
