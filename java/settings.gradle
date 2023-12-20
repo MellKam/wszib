@@ -17,4 +17,5 @@ include (
   'homework7',
   'homework8',
   'homework9',
+  'homework10',
 )
