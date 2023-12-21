@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			async function printStringByCharWithDelay(str, delay = 500) {
+				const p = document.createElement("p");
+				document.body.appendChild(p);
+
+				const print = async () => {
+					for (const char of str) {
+						p.innerText += char;
+						await new Promise((res) => setTimeout(res, delay));
+					}
+					p.innerText = "";
+					print();
+				};
+
+				print();
+			}
+
+			printStringByCharWithDelay("hello world", 200);
+		</script>
+	</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Table Editor</title>
+	</head>
+	<body>
+		<style>
+			td {
+				border: 1px solid black;
+				min-width: 40px;
+			}
+		</style>
+		<script>
+			class Table {
+				id;
+				data;
+
+				constructor(data) {
+					this.id = crypto.randomUUID();
+					this.data = data;
+				}
+
+				render() {
+					const table = document.createElement("table");
+					table.id = this.id;
+
+					for (const rowIdx in this.data) {
+						const tr = document.createElement("tr");
+						for (const cellIdx in this.data[rowIdx]) {
+							const td = document.createElement("td");
+							td.contentEditable = true;
+							td.innerText = this.data[rowIdx][cellIdx];
+							td.oninput = (event) => {
+								this.data[rowIdx][cellIdx] = event.target.innerText;
+							};
+							tr.appendChild(td);
+						}
+						table.appendChild(tr);
+					}
+
+					const existingTable = document.getElementById(this.id);
+					if (existingTable) {
+						existingTable.replaceWith(table);
+					} else {
+						document.body.appendChild(table);
+					}
+				}
+
+				addRow(columnData) {
+					this.data.push(Array(this.data[0].length).fill(""));
+					this.render();
+				}
+
+				addColumn() {
+					this.data.forEach((row) => row.push(""));
+					this.render();
+				}
+			}
+
+			const myTable = new Table([
+				["hello", "y", "make"],
+				["x", "world", "jkp"],
+				["switch", "again", "cool"],
+			]);
+
+			myTable.render();
+
+			const addRowButton = document.createElement("button");
+			addRowButton.innerText = "Add Row";
+			addRowButton.onclick = () => myTable.addRow();
+			document.body.appendChild(addRowButton);
+
+			const addColumnButton = document.createElement("button");
+			addColumnButton.innerText = "Add Column";
+			addColumnButton.onclick = () => myTable.addColumn();
+			document.body.appendChild(addColumnButton);
+		</script>
+	</body>
+</html>
