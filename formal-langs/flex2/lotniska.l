@@ -1,38 +1,39 @@
 %{
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
+
+int columnIndex;
+char airportName[64];
+char targetCountry[32];
 %}
 
 %option noyywrap
 
-%{
-// Function to remove diacritical marks from a string
-void removeDiacriticalMarks(char *str) {
-    // Implementation of diacritical marks removal (you may need to add more cases)
-    // ...
-}
-
-// Function to print airports for a specified country
-void printAirportsForCountry(char *country) {
-    // Implementation to read the CSV file and print airports for the specified country
-    // ...
-}
-%}
-
-DIGIT [0-9]
-ALPHA [a-zA-Z]
-ALPHANUM [a-zA-Z0-9]
-
 %%
-\n      /* ignore newlines */
-" "     /* ignore spaces */
-";"     /* semicolon is a separator */
 
-{ALPHA}+    { removeDiacriticalMarks(yytext); }
-{ALPHA}+"," { printAirportsForCountry(yytext); }
+[^;\n]*; {
+    if (yytext != NULL && yytext[0] != '\0') {
+        size_t length = strlen(yytext);
+        if (length > 0) {
+            yytext[length - 1] = '\0';
+        }
+    }
 
-.       /* ignore any other characters */
+    if (columnIndex == 4) {
+        strcpy(airportName, yytext);
+    }
+    if (columnIndex == 6 && strcmp(targetCountry, yytext) == 0) {
+        printf("%s, %s\n", airportName, targetCountry);
+    }
+
+    if (columnIndex == 10) {
+        columnIndex = 1;
+    } else {
+        columnIndex++;
+    }
+}
+\n {}
+.  {}
 
 %%
 
@@ -42,14 +43,7 @@ int main(int argc, char *argv[]) {
         exit(EXIT_FAILURE);
     }
 
-    yyin = fopen("Lotniska.csv", "r");
-    if (yyin == NULL) {
-        perror("Error opening file");
-        exit(EXIT_FAILURE);
-    }
-
-    printAirportsForCountry(argv[1]);
-
-    fclose(yyin);
+    strcpy(targetCountry, argv[1]);
+    yylex();
     return 0;
 }
