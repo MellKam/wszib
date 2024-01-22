@@ -4,11 +4,10 @@
 
 int columnIndex;
 char airportName[64];
-char targetCountry[32];
+char targetCountry[64];
 %}
 
 %option noyywrap
-
 %%
 
 [^;\n]*; {
@@ -26,12 +25,9 @@ char targetCountry[32];
         printf("%s, %s\n", airportName, targetCountry);
     }
 
-    if (columnIndex == 10) {
-        columnIndex = 1;
-    } else {
-        columnIndex++;
-    }
+    columnIndex++;
 }
+;.*$ { columnIndex = 1; }
 \n {}
 .  {}
 

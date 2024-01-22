@@ -1,7 +1,7 @@
 PROG = lotniska
 
 all : ${PROG}
-	./${PROG} < Lotniska.csv
+	./${PROG} 'Wegry' < Lotniska.csv
 
 lex.yy.c: ${PROG}.l
 	flex ${PROG}.l
