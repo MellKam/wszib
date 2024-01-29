@@ -1,15 +1,23 @@
-PROG = grammar
+PROG = parser
+OS := $(shell uname)
 
-all: ${PROG} run
+ifeq ($(OS), Linux)
+	LIBS = -lfl
+else
+	LIBS = -ll
+endif
+
+${PROG}: ${PROG}.tab.c lex.yy.c
+	gcc -o ${PROG} ${PROG}.tab.c lex.yy.c ${LIBS}
 
 ${PROG}.tab.c: ${PROG}.y
 	bison -d ${PROG}.y
 
-lex.yy.c: ${PROG}lex.l
-	flex ${PROG}lex.l
-
-${PROG}: ${PROG}.tab.c lex.yy.c
-	gcc -o ${PROG} ${PROG}.tab.c lex.yy.c -lfl
+lex.yy.c: lexer.l
+	flex lexer.l
 
 run: ${PROG}
-	./${PROG} <test_${PROG}
+	./${PROG} < test_blok_instrukcji.txt
+
+clean:
+	rm -f ${PROG} lex.yy.c ${PROG}.tab.c ${PROG}.tab.h

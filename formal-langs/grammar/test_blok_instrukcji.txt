@@ -1,0 +1,17 @@
+{ a = b; }
+
+{
+  licznik = licznik - 1;
+  i = i + 1;
+}
+
+{
+  zmienna1 = i / j;
+  zmienna2 = i * j;
+  i++;
+  j--;
+}
+
+{ 
+  x++;
+}
