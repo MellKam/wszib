@@ -1,0 +1,65 @@
+<html>
+  <head>
+      <title>Light</title>
+      <meta name="author" content="Darin Nikolow">
+      <style>
+       body { margin: 0; }
+       canvas { display: block; }
+      </style>
+  </head>
+  <body>
+    <script type="module">
+    import * as THREE from 'https://unpkg.com/three/build/three.module.js';
+    var scene = new THREE.Scene();
+    var camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 );
+    var renderer;
+    
+    renderer = new THREE.WebGLRenderer();
+    renderer.setSize( window.innerWidth, window.innerHeight );
+    renderer.shadowMap.enabled = true;
+    document.body.appendChild( renderer.domElement );
+    
+    var geometry = new THREE.BoxGeometry();
+    var material = new THREE.MeshLambertMaterial( { color: 0x00ff00 } );
+    var cube = new THREE.Mesh( geometry, material );
+    scene.add( cube );
+    cube.castShadow = true;
+    
+    var directionalLight = new THREE.DirectionalLight( 0xffffff, 1.0 );
+    scene.add( directionalLight );
+    directionalLight.castShadow = true;
+    directionalLight.position.x = 1;
+    directionalLight.position.z = 1;
+
+    camera.position.z = 5;
+
+    var floorGeometry = new THREE.PlaneGeometry(5, 5);
+    var floorMaterial = new THREE.MeshLambertMaterial( { color: 0x00ffff } );
+    var floor = new THREE.Mesh( floorGeometry, floorMaterial );
+    scene.add(floor);
+    floor.rotation.x = -Math.PI/2.0;
+    floor.position.y = -1.0;
+    floor.receiveShadow = true;
+    let isAnimate = true;
+
+    window.addEventListener("keydown", (e) => {
+      if (e.key === ' ' && isAnimate) {
+        isAnimate = false;
+      } else if (e.key === ' ' && !isAnimate) {
+        isAnimate = true;
+        animate();
+      } 
+    })
+
+    var animate = function () {
+      if (!isAnimate) return;
+      requestAnimationFrame( animate );	 
+      cube.rotation.x += 0.01;
+      cube.rotation.y += 0.01;
+      renderer.render( scene, camera );
+    };
+    
+    animate();
+    </script>
+  </body>
+</html>

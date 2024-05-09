@@ -1,0 +1,114 @@
+<html>
+  <head>
+      <title>Light</title>
+      <meta name="author" content="Darin Nikolow">
+      <style>
+       body { margin: 0; }
+       canvas { display: block; }
+      </style>
+  </head>
+  <body>
+    <script type="module">
+    import * as THREE from 'https://unpkg.com/three/build/three.module.js';
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 );
+    const renderer = new THREE.WebGLRenderer();
+    renderer.setSize( window.innerWidth, window.innerHeight );
+    renderer.shadowMap.enabled = true;
+    document.body.appendChild( renderer.domElement );
+    
+    const geometry = new THREE.BoxGeometry();
+    const material = new THREE.MeshLambertMaterial( { color: 0x00ff00 } );
+    const cube = new THREE.Mesh( geometry, material );
+    scene.add( cube );
+    cube.castShadow = true;
+    
+    const directionalLight = new THREE.DirectionalLight( 0xffffff, 1.0 );
+    scene.add( directionalLight );
+    directionalLight.castShadow = true;
+    directionalLight.position.x = 1;
+    directionalLight.position.z = 1;
+
+    camera.position.z = 5;
+
+    const floorGeometry = new THREE.PlaneGeometry(5, 5);
+    const floorMaterial = new THREE.MeshLambertMaterial( { color: 0x00ffff } );
+    const floor = new THREE.Mesh( floorGeometry, floorMaterial );
+    scene.add(floor);
+    floor.rotation.x = -Math.PI/2.0;
+    floor.position.y = -1.0;
+    floor.receiveShadow = true;
+    let isAnimate = true;
+
+    const shapes = [];
+    shapes.push(cube);
+
+    window.addEventListener("keydown", (e) => {
+      if (e.key === ' ' && isAnimate) {
+        isAnimate = false;
+      } else if (e.key === ' ' && !isAnimate) {
+        isAnimate = true;
+        animate();
+      } else if (e.key === 'ArrowUp') {
+        requestAnimationFrame(() => {
+          for (const cube of shapes) {
+            cube.rotation.x -= 0.1;
+          } 
+          renderer.render( scene, camera );
+        })
+      } else if (e.key === 'ArrowDown') {
+        requestAnimationFrame(() => {
+          for (const cube of shapes) {
+            cube.rotation.x += 0.1;
+          }
+          renderer.render( scene, camera );
+        })
+      } else if (e.key === 'ArrowLeft') {
+        requestAnimationFrame(() => {
+          for (const cube of shapes) {
+            cube.rotation.y -= 0.1;
+          }
+          renderer.render( scene, camera );
+        })
+      } else if (e.key === 'ArrowRight') {
+        requestAnimationFrame(() => {
+          for (const cube of shapes) {
+            cube.rotation.y += 0.1;
+          }
+          renderer.render( scene, camera );
+        })
+      }
+    })
+
+    const animate = function () {
+      if (!isAnimate) return;
+      requestAnimationFrame( animate );	 
+      for (const cube of shapes) {
+        cube.rotation.x += 0.01;
+        cube.rotation.y += 0.01;
+      }
+      renderer.render( scene, camera );
+    };
+    
+    animate();
+
+    const getRandomBox = () => {
+      const geometry = new THREE.BoxGeometry(Math.random(), Math.random(), Math.random());
+      const material = new THREE.MeshLambertMaterial( { color: Math.random() * 0xffffff  } );
+      const cube = new THREE.Mesh(geometry, material);
+      scene.add( cube );
+      cube.castShadow = true;
+      cube.position.x = (Math.random() - 0.5) * 10;
+      cube.position.y = (Math.random() - 0.5) * 10;
+      cube.position.z = (Math.random() - 0.5) * 10;
+      return cube;
+    }
+
+    window.addEventListener("mousedown", (e) => {
+      const box = getRandomBox();
+      shapes.push(box);
+      scene.add(box);
+    })
+    </script>
+  </body>
+</html>
