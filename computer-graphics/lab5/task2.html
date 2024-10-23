@@ -49,24 +49,36 @@
         isAnimate = true;
         animate();
       } else if (e.key === 'ArrowUp') {
+        isAnimate = false;
         requestAnimationFrame(() => {
           cube.rotation.x -= 0.1;
           renderer.render( scene, camera );
+          isAnimate = true;
+          animate();
         })
       } else if (e.key === 'ArrowDown') {
+        isAnimate = false;
         requestAnimationFrame(() => {
           cube.rotation.x += 0.1;
           renderer.render( scene, camera );
+          isAnimate = true;
+          animate();
         })
       } else if (e.key === 'ArrowLeft') {
+        isAnimate = false;
         requestAnimationFrame(() => {
           cube.rotation.y -= 0.1;
           renderer.render( scene, camera );
+          isAnimate = true;
+          animate();
         })
       } else if (e.key === 'ArrowRight') {
+        isAnimate = false;
         requestAnimationFrame(() => {
           cube.rotation.y += 0.1;
           renderer.render( scene, camera );
+          isAnimate = true;
+          animate();
         })
       }
     })
@@ -74,8 +86,8 @@
     var animate = function () {
       if (!isAnimate) return;
       requestAnimationFrame( animate );	 
-      cube.rotation.x += 0.01;
-      cube.rotation.y += 0.01;
+      // cube.rotation.x += 0.01;
+      // cube.rotation.y += 0.01;
       renderer.render( scene, camera );
     };
     

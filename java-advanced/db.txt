@@ -1,0 +1,7 @@
+623,Toyota,Corolla,false
+623,Toyota,Corolla,true
+623,Toyota,Corolla,true
+623,Toyota,Corolla,true
+124,Mazda,RX-7,true
+124,Mazda,RX-7,true
+123,Nissan,Skyline,false

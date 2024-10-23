@@ -43,11 +43,10 @@
     let isAnimate = true;
 
     window.addEventListener("keydown", (e) => {
-      if (e.key === ' ' && isAnimate) {
-        isAnimate = false;
-      } else if (e.key === ' ' && !isAnimate) {
-        isAnimate = true;
-        animate();
+      if (e.key === ' ') {
+        isAnimate = !isAnimate;
+        if (isAnimate)
+          animate();
       } 
     })
 
