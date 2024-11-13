@@ -1,0 +1,4 @@
+set terminal png
+set output 'chart1.png'
+
+plot  "wartosci.txt" w points pointsize 3 , "inter.txt" w lines, x*x*x+sin(x*x)

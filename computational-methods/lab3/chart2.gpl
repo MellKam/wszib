@@ -1,0 +1,11 @@
+set terminal png
+set output 'chart2.png'
+set title 'Interpolacja funkcji y = 1/(1 + 25x^2)'
+set xlabel 'x'
+set ylabel 'y'
+set grid
+plot 'wartosci.txt' using 1:2 with points pointsize 3 title 'Wezly', \
+     'inter_wielomian.txt' using 1:2 with lines title 'Interpolacja wielomianowa', \
+     'inter_liniowa.txt' using 1:2 with lines title 'Interpolacja liniowa', \
+     'inter_kubiczna.txt' using 1:2 with lines title 'Interpolacja kubiczna', \
+     1/(1 + 25*x**2) title 'Funkcja zrodlowa'
