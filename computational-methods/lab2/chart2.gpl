@@ -1,0 +1,10 @@
+set terminal png
+set output 'chart2.png'
+
+set title "Symulacja stygniecia gwiazd neutronowych"
+set xlabel "Czas (logarytmiczny)"
+set ylabel "Temperatura"
+
+set logscale x
+
+plot 'dane1.dat' using 1:2 with lines title "Temperatura"

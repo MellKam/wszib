@@ -1,0 +1,14 @@
+set terminal png
+set output 'chart.png'
+
+set xrange [-3:3]
+set yrange [-4:5]
+set grid linetype 1 linewidth 1 lc rgb "gray" dashtype 3
+set key top left box opaque 
+set key samplen 2          
+set style line 1 lc rgb "black" lt 1 lw 1 
+
+plot "fun1.txt" using 1:($2+$3)/2:2:3 w yerrorbars lc rgb "red" title "Dane z pliku fun1.txt", \
+     sin(x ** 5) lc rgb "green" title "sin(x^5)", \
+     2 * cos(x * sin(x)) with boxes lc rgb "blue" title "2 * cos(x * sin(x))", \
+     3 * sin(x) lc rgb "red" title "3 * sin(x)"
