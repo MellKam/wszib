@@ -1,0 +1,12 @@
+set terminal pngcairo size 800,600
+set output 'f1_aproximation.png'
+set title "Aproksymacja Czebyszewa dla funkcji y = exp(x) * cos(0.5 * x^2)"
+set xlabel "x"
+set ylabel "y"
+set key right top
+set grid
+
+plot "result_n3.dat" using 1:2 with lines title "Funkcja dokładna (n=3)", \
+     "result_n3.dat" using 1:3 with lines title "Aproksymacja (n=3)", \
+     "result_n10.dat" using 1:3 with lines title "Aproksymacja (n=10)", \
+     "result_n40.dat" using 1:3 with lines title "Aproksymacja (n=40)"

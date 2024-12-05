@@ -1,0 +1,12 @@
+
+set terminal pngcairo size 800,600
+set output 'interpolation_plot.png'
+set title 'Interpolation Methods Comparison'
+set xlabel 'x'
+set ylabel 'y'
+set grid
+
+plot 'wartosci.txt' using 1:2 with points title 'Data Points', \
+     'inter_poly.txt' using 1:2 with lines title 'Polynomial Interpolation', \
+     'inter_cspline.txt' using 1:2 with lines title 'Cubic Spline Interpolation', \
+     'inter_akima.txt' using 1:2 with lines title 'Akima Interpolation'
