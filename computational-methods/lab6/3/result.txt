@@ -1,0 +1,40 @@
+Using Newton's Method:
+Newton Method Iter 1: x = 1.5000000, f(x) = 0.2500000
+Newton Method Iter 2: x = 1.2500000, f(x) = 0.0625000
+Newton Method Iter 3: x = 1.1250000, f(x) = 0.0156250
+Newton Method Iter 4: x = 1.0625000, f(x) = 0.0039062
+Newton Method Iter 5: x = 1.0312500, f(x) = 0.0009766
+Newton Method Iter 6: x = 1.0156250, f(x) = 0.0002441
+Newton Method Iter 7: x = 1.0078125, f(x) = 0.0000610
+Newton Method Iter 8: x = 1.0039062, f(x) = 0.0000153
+Newton Method Iter 9: x = 1.0019531, f(x) = 0.0000038
+Newton Method Iter 10: x = 1.0009766, f(x) = 0.0000010
+Newton Method converged to x = 1.0009766 after 10 iterations
+
+Using Simplified Newton's Method:
+Simplified Newton Method Iter 1: x = 1.5000025, f(x) = 0.2500025
+Simplified Newton Method Iter 2: x = 1.2500037, f(x) = 0.0625019
+Simplified Newton Method Iter 3: x = 1.1250044, f(x) = 0.0156261
+Simplified Newton Method Iter 4: x = 1.0625047, f(x) = 0.0039068
+Simplified Newton Method Iter 5: x = 1.0312548, f(x) = 0.0009769
+Simplified Newton Method Iter 6: x = 1.0156299, f(x) = 0.0002443
+Simplified Newton Method Iter 7: x = 1.0078175, f(x) = 0.0000611
+Simplified Newton Method Iter 8: x = 1.0039112, f(x) = 0.0000153
+Simplified Newton Method Iter 9: x = 1.0019581, f(x) = 0.0000038
+Simplified Newton Method Iter 10: x = 1.0009815, f(x) = 0.0000010
+Simplified Newton Method converged to x = 1.0009815 after 10 iterations
+
+Using Steffenson's Method:
+Steffenson Method Iter 1: x = 1.6666667, f(x) = 0.4444444
+Steffenson Method Iter 2: x = 1.4166667, f(x) = 0.1736111
+Steffenson Method Iter 3: x = 1.2442529, f(x) = 0.0596595
+Steffenson Method Iter 4: x = 1.1354180, f(x) = 0.0183380
+Steffenson Method Iter 5: x = 1.0720028, f(x) = 0.0051844
+Steffenson Method Iter 6: x = 1.0372525, f(x) = 0.0013877
+Steffenson Method Iter 7: x = 1.0189668, f(x) = 0.0003597
+Steffenson Method Iter 8: x = 1.0095725, f(x) = 0.0000916
+Steffenson Method Iter 9: x = 1.0048091, f(x) = 0.0000231
+Steffenson Method Iter 10: x = 1.0024103, f(x) = 0.0000058
+Steffenson Method Iter 11: x = 1.0012066, f(x) = 0.0000015
+Steffenson Method Iter 12: x = 1.0006037, f(x) = 0.0000004
+Steffenson Method converged to x = 1.0006037 after 12 iterations
