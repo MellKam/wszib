@@ -1,0 +1,31 @@
+Accuracy epsrel: 1.0e-03
+Function: f3: sin(x), epsrel: 1.0e-03, result: 2.0000000000, error: 0.0000000000, number of intervals: 1
+Function: f4: tan(x), epsrel: 1.0e-03, result: 13.8155086985, error: 0.0050020858, number of intervals: 17
+Function: f5: log(x + x^2), epsrel: 1.0e-03, result: 6.2060726455, error: 0.0000000000, number of intervals: 1
+Rectangle method for function f3: sin(x), epsrel 1.0e-03: 2.0002008117
+Rectangle method for function f4: tan(x), epsrel 1.0e-03: 13.8154192811
+Rectangle method for function f5: log(x + x^2), epsrel 1.0e-03: 6.2061687630
+
+Accuracy epsrel: 1.0e-04
+Function: f3: sin(x), epsrel: 1.0e-04, result: 2.0000000000, error: 0.0000000000, number of intervals: 1
+Function: f4: tan(x), epsrel: 1.0e-04, result: 13.8155105592, error: 0.0005379385, number of intervals: 18
+Function: f5: log(x + x^2), epsrel: 1.0e-04, result: 6.2060726455, error: 0.0000000000, number of intervals: 1
+Rectangle method for function f3: sin(x), epsrel 1.0e-04: 2.0000125499
+Rectangle method for function f4: tan(x), epsrel 1.0e-04: 13.8154877323
+Rectangle method for function f5: log(x + x^2), epsrel 1.0e-04: 6.2060966773
+
+Accuracy epsrel: 1.0e-05
+Function: f3: sin(x), epsrel: 1.0e-05, result: 2.0000000000, error: 0.0000000000, number of intervals: 1
+Function: f4: tan(x), epsrel: 1.0e-05, result: 13.8155105579, error: 0.0000005768, number of intervals: 19
+Function: f5: log(x + x^2), epsrel: 1.0e-05, result: 6.2060726455, error: 0.0000000000, number of intervals: 1
+Rectangle method for function f3: sin(x), epsrel 1.0e-05: 2.0000031375
+Rectangle method for function f4: tan(x), epsrel 1.0e-05: 13.8155091313
+Rectangle method for function f5: log(x + x^2), epsrel 1.0e-05: 6.2060741476
+
+Accuracy epsrel: 1.0e-06
+Function: f3: sin(x), epsrel: 1.0e-06, result: 2.0000000000, error: 0.0000000000, number of intervals: 1
+Function: f4: tan(x), epsrel: 1.0e-06, result: 13.8155105579, error: 0.0000005768, number of intervals: 19
+Function: f5: log(x + x^2), epsrel: 1.0e-06, result: 6.2060726455, error: 0.0000000000, number of intervals: 1
+Rectangle method for function f3: sin(x), epsrel 1.0e-06: 2.0000001961
+Rectangle method for function f4: tan(x), epsrel 1.0e-06: 13.8155104689
+Rectangle method for function f5: log(x + x^2), epsrel 1.0e-06: 6.2060727394
