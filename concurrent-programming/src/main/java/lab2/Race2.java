@@ -1,107 +1,114 @@
 package lab2;
 
 public class Race2 {
-  public static void main(String[] args) {
-    Counter cnt = new Counter(0);
-    IThread it = new IThread(cnt);
-    DThread dt = new DThread(cnt);
 
-    it.start();
-    dt.start();
+    public static void main(String[] args) {
+        Counter cnt = new Counter(0);
+        count it = new count(cnt);
+        DThread dt = new DThread(cnt);
 
-    try {
-      it.join();
-      dt.join();
-    } catch (InterruptedException ie) {
+        it.start();
+        dt.start();
+
+        try {
+            it.join();
+            dt.join();
+        } catch (InterruptedException ie) {
+        }
+
+        System.out.println("value: " + cnt.value());
     }
-
-    System.out.println("value=" + cnt.value());
-  }
 }
 
 class Semafor {
-  private boolean _stan = true;
-  private int _czeka = 0;
 
-  public Semafor() {
-  }
+    private boolean _stan = true;
+    private int _czeka = 0;
 
-  public synchronized void P() {
-    while (!_stan) {
-      try {
-        _czeka++;
-        wait();
-        _czeka--;
-      } catch (InterruptedException e) {
-        Thread.currentThread().interrupt();
-      }
+    public Semafor() {
     }
-    _stan = false;
-  }
 
-  public synchronized void V() {
-    _stan = true;
-    if (_czeka > 0) {
-      notify();
+    public synchronized void P() {
+        while (!_stan) {
+            try {
+                _czeka++;
+                wait();
+                _czeka--;
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
+        }
+        _stan = false;
     }
-  }
+
+    public synchronized void V() {
+        _stan = true;
+        if (_czeka > 0) {
+            notify();
+        }
+    }
 }
 
 class Counter {
-  private int _val;
-  private final Semafor semafor = new Semafor();
 
-  public Counter(int n) {
-    _val = n;
-  }
+    private int _val;
+    private final Semafor semafor = new Semafor();
 
-  public void inc() {
-    semafor.P();
-    try {
-      _val++;
-    } finally {
-      semafor.V();
+    public Counter(int n) {
+        _val = n;
     }
-  }
 
-  public void dec() {
-    semafor.P();
-    try {
-      _val--;
-    } finally {
-      semafor.V();
+    public void inc() {
+        semafor.P();
+        try {
+            _val++;
+        } finally {
+            semafor.V();
+        }
     }
-  }
 
-  public int value() {
-    return _val;
-  }
+    public void dec() {
+        semafor.P();
+        try {
+            _val--;
+        } finally {
+            semafor.V();
+        }
+    }
+
+    public int value() {
+        return _val;
+    }
 }
 
-class IThread extends Thread {
-  private Counter _cnt;
+class count extends Thread {
 
-  public IThread(Counter c) {
-    _cnt = c;
-  }
+    final private Counter counter;
 
-  public void run() {
-    for (int i = 0; i < 1000000; ++i) {
-      _cnt.inc();
+    public count(Counter c) {
+        counter = c;
     }
-  }
+
+    @Override
+    public void run() {
+        for (int i = 0; i < 1_000_000; ++i) {
+            counter.inc();
+        }
+    }
 }
 
 class DThread extends Thread {
-  private Counter _cnt;
 
-  public DThread(Counter c) {
-    _cnt = c;
-  }
+    final private Counter counter;
 
-  public void run() {
-    for (int i = 0; i < 1000000; ++i) {
-      _cnt.dec();
+    public DThread(Counter c) {
+        counter = c;
     }
-  }
+
+    @Override
+    public void run() {
+        for (int i = 0; i < 1_000_000; ++i) {
+            counter.dec();
+        }
+    }
 }
