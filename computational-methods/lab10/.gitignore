@@ -1,0 +1,4 @@
+brent_minim
+*.o
+quad_golden
+plot_data.txt
